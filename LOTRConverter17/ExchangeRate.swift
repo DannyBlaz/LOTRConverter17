@@ -7,20 +7,24 @@
 
 import SwiftUI
 
-struct ExtractedView: View {
+struct ExchangeRate: View {
+    let leftmage: ImageResource
+    let text: String
+    let rightImage: ImageResource
+    
     var body: some View {
         HStack{
             //Left Currency Image
-            Image(.goldpiece)
+            Image(leftmage)
                 .resizable()
                 .scaledToFit()
                 .frame(height: 33)
             
             // Exchange Rate Text
-            Text("1 Gold Piece = 4 Gold Pennies")
+            Text(text)
             
             // Right currency image
-            Image(.goldpenny)
+            Image(rightImage)
                 .resizable()
                 .scaledToFit()
                 .frame(height: 33)
@@ -29,5 +33,5 @@ struct ExtractedView: View {
 }
 
 #Preview {
-    ExtractedView()
+    ExchangeRate(leftmage: .goldpiece, text: "1 Gold Piece = 4 Gold Pennies", rightImage: .goldpenny)
 }
