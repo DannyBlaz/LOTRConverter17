@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SelectCurrency: View {
     @Environment(\.dismiss) var dismiss
-    @State var currency: Currency
+    @Binding var topCurrency: Currency
+    @Binding var bottomCurrency: Currency
     
     var body: some View {
         ZStack{
@@ -25,35 +26,14 @@ struct SelectCurrency: View {
                     .fontWeight(.bold)
                 
                 // Currency Icon
-                LazyVGrid(columns: [GridItem(), GridItem(),GridItem()]){
-                    ForEach(Currency.allCases){ currency in
-                        if self.currency == currency{
-                            CurrencyIcon(currecyText: currency.name, currencyImage: currency.image)
-                                .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                .overlay {
-                                    RoundedRectangle(cornerRadius: 25)
-                                        .stroke(lineWidth: 3)
-                                        .opacity(0.5)
-                                }
-                        }else{
-                            CurrencyIcon(currecyText: currency.name, currencyImage: currency.image)
-                                .onTapGesture {
-                                    self.currency = currency
-                                }
-                        }
-                    }
-                }
+                IconGrid(currency: $topCurrency)
 
                 //Select Currency Text
                 Text("Select the currency you would like to convert to:")
                     .fontWeight(.bold)
                 
                 // Currency Icon
-                LazyVGrid(columns: [GridItem(), GridItem(),GridItem()]){
-                    ForEach(Currency.allCases){ currency in
-                        CurrencyIcon(currecyText: currency.name, currencyImage: currency.image)
-                    }
-                }
+                IconGrid(currency: $bottomCurrency)
                 
                 //Done Button
                 Button("Done"){
@@ -73,5 +53,5 @@ struct SelectCurrency: View {
 }
 
 #Preview {
-    SelectCurrency(currency: .silverPiece)
+    SelectCurrency(topCurrency: .constant(.copperPenny), bottomCurrency: .constant(.silverPiece))
 }

@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ExchangeRate: View {
-    let leftmage: ImageResource
+    let leftImage: ImageResource
     let text: String
     let rightImage: ImageResource
     
     var body: some View {
         HStack{
             //Left Currency Image
-            Image(leftmage)
+            Image(leftImage)
                 .resizable()
                 .scaledToFit()
                 .frame(height: 33)
@@ -33,5 +33,5 @@ struct ExchangeRate: View {
 }
 
 #Preview {
-    ExchangeRate(leftmage: .goldpiece, text: "1 Gold Piece = 4 Gold Pennies", rightImage: .goldpenny)
+    ExchangeRate(leftImage: .goldpiece, text: "1 Gold Piece = 4 Gold Pennies", rightImage: .goldpenny)
 }
