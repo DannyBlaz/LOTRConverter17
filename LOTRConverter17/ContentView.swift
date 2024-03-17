@@ -118,7 +118,7 @@ struct ContentView: View {
                 
                 // Hide Keyboard
                 Button("Done") {
-                                rightTyping = false    // set showKeyboard to false to hide the keyboard
+                                showKeyboard = false    // set showKeyboard to false to hide the keyboard
                             }
                 .buttonStyle(.borderedProminent)
                 .tint(.brown)
